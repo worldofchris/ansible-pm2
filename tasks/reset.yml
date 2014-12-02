@@ -1,8 +1,19 @@
 ---
-
 - name: Deleting all apps
-  command: pm2 -s delete all
+  command: pm2 delete all
   ignore_errors: yes
+  when: pm2_startup_user == 'root'
+  tags:
+    - web
+    - pm2
+    - reset
+
+- name: Deleting all apps as user we want startup script to run them as
+  command: pm2 delete all
+  ignore_errors: yes
+  sudo: yes
+  sudo_user: '{{ pm2_startup_user }}'
+  when: pm2_startup_user != 'root'
   tags:
     - web
     - pm2
