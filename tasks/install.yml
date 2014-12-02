@@ -12,7 +12,7 @@
 
 - name: installing startup script
   command: >
-    pm2 -s startup {{ pm2_startup }}
+    pm2 -s startup {{ pm2_startup }} -u {{ pm2_startup_user }}
   tags:
     - web
     - pm2

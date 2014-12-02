@@ -54,6 +54,12 @@ pm2_service_state: started
 pm2_version: latest
 ```
 
+Additionally if you want the startup script to be executed under another user you can specify that user with:
+
+```
+pm2_startup_username
+```
+
 ## Handlers
 
 * `restart pm2` 
